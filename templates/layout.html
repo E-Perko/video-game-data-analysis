@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
 
+    <!-- Bootstrap -->
+
+    <!-- Latest compiled and minified bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- link to jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<link  rel="stylesheet" href="{{url_for('static',filename='style.css')}}" type="text/css">
+    
+    <title>Broadway Data - {% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href=".">Broadway Data</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li {% if active_page == "about" %} class="active"{% endif %}><a href=".">About the Data</a></li>
+          <li {% if active_page == "popularity" %} class="active"{% endif %}><a href="popularity">Popularity of Shows and Theatres</a></li>
+          <li {% if active_page == "databyshow" %} class="active"{% endif %}><a href="databyshow">Data by Show</a></li>
+          <li {% if active_page == "spending" %} class="active"{% endif %}><a href="spending">Spending on Broadway Shows</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="content">
+      <h1>{% block heading %}{% endblock %}</h1>
+      {% block body %}{% endblock %}
+    </div>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </body>
+</html>
