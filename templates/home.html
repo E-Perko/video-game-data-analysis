@@ -4,16 +4,11 @@
 
 {% block body %}
     <p>The data used in this web app is from the CORGIS Dataset Project and can be found 
-      <a href="https://corgis-edu.github.io/corgis/json/video_games/">here</a>.  The data contains statistics about Broadway shows 
-      from 2004 to 2010.  Some of the more obscure games don't have data on game completion times, as nobody was polled for them.</p>
-    <p>One of the statistics reported for each show each week is gross potential.  The gross potential of a show for a week is the percent 
-      of the maximum possible earnings that was actually earned.  For example, if 
-      a show could have earned $100,000 based on ticket prices, theatre capacity, and the number of performances, but it actually earned 
-      $80,000, then its gross potential for that week would be 80%.  When it was not possible to calculate the gross potential, it was 
-      recorded as 0.  Gross potential can be greater than 100% when theatres sell extra standing room tickets or when they use dynamic 
-      ticket pricing.  The gross potential is calculated based on original ticket prices. 
-      (<a href="https://www.broadwayworld.com/board/readmessage.php?thread=1089643">Source</a>)</p>
-	<p>Some shows are listed multiple times on the Data by Show page (for example, Cats and Cats 2016).  This indicates that the show ran for a period of time 
-		and then stopped.  It was then revived in the year indicated by the number following its name.  A revival production may continue for more than a year.
-		</p>
+      <a href="https://corgis-edu.github.io/corgis/json/video_games/">here</a>. The data contains statistics about video game releases
+      from 2004 to 2010.</p>
+    <p>The main statistic that was reported was the average, median, shortest, and longest completion times for each game. Multiple categories 
+      of game completion are considered in the data, such as beating the main and post game or completing all that the game has to offer. These
+      These times are measured in hours in th data. Some of the more obscure games don't have data on game completion times, as nobody was polled for them.
+      This is shown as a 0 in the data.</p>
+	<p>The database also covers various other aspects of the game, such as its release date, console, genre, and a rating out of 100.</p>
 {% endblock %}
