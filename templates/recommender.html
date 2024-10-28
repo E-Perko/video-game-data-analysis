@@ -1,1 +1,18 @@
+{% extends "layout.html" %}
 
+{% set active_page = "recommender" %}
+
+{% block title %}Video Game Recommender{% endblock %}
+
+{% block heading %}Video Game Recommender{% endblock %}
+
+{% block body %}
+<h2>What is your favorite video game genre?</h2>
+<form action="/fav_genre">
+  <select name="genre">
+    {{ options }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+{% endblock %}

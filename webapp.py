@@ -10,6 +10,11 @@ app = Flask(__name__)
 @app.route("/")
 def render_main():
     return render_template('home.html')
+    
+@app.route("recommender")
+def render_recommender():
+    return render_template('recommender.html')
+        with open('video_games.json') as video_games_data:
 
 def is_localhost():
     root_url = request.url_root
