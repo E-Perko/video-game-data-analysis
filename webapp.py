@@ -15,20 +15,19 @@ def render_main():
 def render_recommender():
     with open('video_games.json') as video_games_data:
         games = json.load(video_games_data)
-    if 'genres' in request.args:
-        genres = request.args['genres']
-        return render_template('recommenderdata.html', options=get_year_options(games), genres=genres)
-    return render_template('recommender.html', options=get_genres_options(games))
+    if 'genre' in request.args:
+        genre = request.args['genre']
+        return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
+    return render_template('recommender.html', options=get_genre_options(games))
 
-def get_genres_options(weeks):
-    """Returns the html code for a drop down menu.  Each option is a year for which there is complete data (1990 and 2016 are missing data)."""
+def get_genre_options(games):
     genres = []
     options = ""
-    for w in weeks:
-        genres = w["Metadata"]["Genres"]
-        if (genres not in genres):
-            years.append(genres)
-            options += Markup("<option value=\"" + str(genres) + "\">" + str(genres) + "</option>")
+    for g in games:
+        genre = g["Metadata"]["Genres"]
+        if (genre not in genres):
+            genres.append(genre)
+            options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
     return options    
 
 def is_localhost():
@@ -37,4 +36,4 @@ def is_localhost():
     return root_url == developer_url
     
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=True)
