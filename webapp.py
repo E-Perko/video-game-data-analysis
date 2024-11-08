@@ -20,6 +20,10 @@ def render_recommender():
         return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
     return render_template('recommender.html', options=get_genre_options(games))
 
+@app.route("/consolechart")
+def render_consolechart():
+    return render_template('consolechart.html')
+    
 def get_genre_options(games):
     genres = []
     options = ""
