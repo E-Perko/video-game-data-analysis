@@ -19,10 +19,6 @@ def render_recommender():
         genre = request.args['genre']
         return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
     return render_template('recommender.html', options=get_genre_options(games))
-
-@app.route("/consolechart")
-def render_consolechart():
-    return render_template('consolechart.html')
     
 def get_genre_options(games):
     genres = []
@@ -34,6 +30,21 @@ def get_genre_options(games):
             options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
     return options    
 
+@app.route("/consolechart")
+def render_consolechart():
+    return render_template('consolechart.html')
+    """, points=format_dict_as_graph_points(get_console_nums())"""
+    
+def get_console_nums():
+    consoles = []
+    consolenums = []
+    for g in games:
+        genre = g["Metadata"]["Genres"]
+        if (genre not in genres):
+            genres.append(genre)
+            options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
+    return options    
+    
 def is_localhost():
     root_url = request.url_root
     developer_url = 'http://127.0.0.1:5000/'
