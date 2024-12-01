@@ -32,8 +32,9 @@ def get_genre_options(games):
 
 @app.route("/consolechart")
 def render_consolechart():
-    return render_template('consolechart.html')
-    """, points=format_dict_as_graph_points(get_console_nums())"""
+    with open('video_games.json') as video_games_data:
+        games = json.load(video_games_data)
+    return render_template('consolechart.html', dataPoints=console_game_totals(games))
     
 def get_console_nums():
     consoles = []
