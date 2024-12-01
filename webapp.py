@@ -35,6 +35,22 @@ def render_consolechart():
     with open('video_games.json') as video_games_data:
         games = json.load(video_games_data)
     return render_template('consolechart.html', dataPoints=console_game_totals(games))
+
+def console_game_totals(games):
+    #create a dictionary of year:gross
+    consoles = {}
+    for g in games:
+        console = g["Release"]["Console"]
+        if console  in consoles:
+            consoles[console] = consoles[console] + 1
+        else:
+            consoles[console]] = 1
+    code = "["
+    for console, video_games in consoles.items():
+        code = code + Markup("{ x: '" + str(console) + "', y: " + str(video_games) + " },")
+    code = code[:-1] #remove the last comma
+    code = code + "]"
+    return code
     
 def get_console_nums():
     consoles = []
