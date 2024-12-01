@@ -37,11 +37,10 @@ def render_consolechart():
     return render_template('consolechart.html', dataPoints=console_game_totals(games))
 
 def console_game_totals(games):
-    #create a dictionary of year:gross
     consoles = {}
     for g in games:
         console = g["Release"]["Console"]
-        if console  in consoles:
+        if console in consoles:
             consoles[console] = consoles[console] + 1
         else:
             consoles[console]] = 1
