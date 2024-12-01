@@ -67,7 +67,5 @@ def is_localhost():
     developer_url = 'http://127.0.0.1:5000/'
     return root_url == developer_url
     
-"""if __name__=="__main__":
-    app.run(debug=True)"""
-
-app.run(debug=True)
+if __name__=="__main__":
+    app.run(debug=True)
