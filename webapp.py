@@ -17,12 +17,11 @@ def render_recommender():
         games = json.load(video_games_data)
     if 'genre' in request.args:
         genre = request.args['genre']
-        return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
     return render_template('recommender.html', options=get_genre_options(games))
 
 @app.route('/recommenderdata')
 def render_recommenderdata():
-    return render_template('recommenderdata.html')
+    return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
     
 def get_genre_options(games):
     genres = []
@@ -54,7 +53,7 @@ def console_game_totals(games):
     graph_points = graph_points[:-2]
     return graph_points
 
-def get_console_nums():
+"""def get_console_nums():
     consoles = []
     consolenums = []
     for g in games:
@@ -62,7 +61,7 @@ def get_console_nums():
         if (genre not in genres):
             genres.append(genre)
             options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
-    return options    
+    return options"""    
     
 def is_localhost():
     root_url = request.url_root
