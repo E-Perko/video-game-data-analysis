@@ -46,7 +46,7 @@ def console_game_totals(games):
             consoles[console] = 1
     graph_points = ""
     for console, video_games in consoles.items():
-        graph_points = graph_points + Markup("{ label: '" + str(console) + "', y: '" + str(video_games) + "' }, ")
+        graph_points = graph_points + Markup("{ label: '" + str(console) + "', y: '" + str(video_games) + "' },")
     graph_points = graph_points[:-2]
     return graph_points
 
