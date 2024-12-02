@@ -19,6 +19,10 @@ def render_recommender():
         genre = request.args['genre']
         return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
     return render_template('recommender.html', options=get_genre_options(games))
+
+@app.route('/recommenderdata')
+def render_recommenderdata():
+    return render_template('recommenderdata.html')
     
 def get_genre_options(games):
     genres = []
