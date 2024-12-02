@@ -34,7 +34,7 @@ def get_genre_options(games):
 def render_consolechart():
     with open('video_games.json') as video_games_data:
         games = json.load(video_games_data)
-    return render_template('consolechart.html', dataPoints=console_game_totals(games))
+    return render_template('consolechart.html', graph_points=console_game_totals(games))
 
 def console_game_totals(games):
     consoles = {}
@@ -44,11 +44,11 @@ def console_game_totals(games):
             consoles[console] = consoles[console] + 1
         else:
             consoles[console] = 1
-    code = ""
+    graph_points = ""
     for console, video_games in consoles.items():
-        code = code + Markup("{ label: '" + str(console) + "', y: '" + str(video_games) + "' }, ")
-    code = code[:-2]
-    return code
+        graph_points = graph_points + Markup("{ label: '" + str(console) + "', y: '" + str(video_games) + "' }, ")
+    graph_points = graph_points[:-2]
+    return graph_points
 
 def get_console_nums():
     consoles = []
