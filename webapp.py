@@ -47,7 +47,7 @@ def console_game_totals(games):
     code = ""
     for console, video_games in consoles.items():
         code = code + Markup("{ label: '" + str(console) + "', y: '" + str(video_games) + "'  }, ")
-    code = code[:-1]
+    code = code[:-2]
     return code
 
 def get_console_nums():
