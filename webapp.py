@@ -17,7 +17,8 @@ def render_recommender():
         games = json.load(video_games_data)
     if 'genre' in request.args:
         genre = request.args['genre']
-    return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
+        return render_template('recommenderdata.html', options=get_genre_options(games), genre=genre)
+    return render_template('recommender.html', options=get_genre_options(games))
 
 def get_genre_options(games):
     genres = []
