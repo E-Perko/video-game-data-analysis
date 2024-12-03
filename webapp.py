@@ -11,6 +11,16 @@ app = Flask(__name__)
 def render_main():
     return render_template('home.html')
     
+"""@app.route('/recommender')
+def render_recommender():
+    with open('video_games.json') as video_games_data:
+        games = json.load(video_games_data)
+    if 'genre' in request.args:
+        genre = request.args['genre']
+        return render_template('recommenderdata.html', options=get_genre_options(games), genre_list=genres)
+    else:
+        return render_template('recommender.html', options=get_genre_options(games))"""
+
 @app.route('/recommender')
 def render_recommender():
     with open('video_games.json') as video_games_data:
@@ -51,15 +61,10 @@ def console_game_totals(games):
     graph_points = graph_points[:-2]
     return graph_points
 
-"""def get_console_nums():
-    consoles = []
-    consolenums = []
-    for g in games:
-        genre = g["Metadata"]["Genres"]
-        if (genre not in genres):
-            genres.append(genre)
-            options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
-    return options"""    
+"""import random
+
+foo = ['a', 'b', 'c', 'd', 'e']
+print(random.choice(foo))"""    
     
 def is_localhost():
     root_url = request.url_root
