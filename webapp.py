@@ -44,7 +44,7 @@ def render_recommendation():
         theGame = random.choice(recommendedGames)["Title"]
         reviewScore = theGame["Metrics"]["Review Score"]
         usedPrice = theGame["Metrics"]["Used Price"]
-        response = "I recommend that you play " + str(theGame) + ", with a review score of " + str(reviewScore) + " out of 100, and a used price of $" + str(usedPrice) + ".") 
+        response = "I recommend that you play " + str(theGame) + ", with a review score of " + str(reviewScore) + " out of 100, and a used price of $" + str(usedPrice) + "." 
     return render_template('recommender.html', recommended_game=response)
 
 def get_genre_options(games):
