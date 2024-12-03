@@ -38,6 +38,13 @@ def render_consolechart():
         games = json.load(video_games_data)
     return render_template('consolechart.html', points=console_game_totals(games))
 
+@app.route("/recommendGame")
+def render_recommendation(): 
+    genre = request.args.get('genre')
+    console = request.args.get('console')
+    response = "I recommend that you play " + (console) + "!"
+    return render_template('recommender.html', recommended_game=response)
+
 def get_genre_options(games):
     genres = []
     genre_options = ""
