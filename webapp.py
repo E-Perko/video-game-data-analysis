@@ -11,16 +11,6 @@ app = Flask(__name__)
 @app.route("/")
 def render_main():
     return render_template('home.html')
-    
-"""@app.route('/recommender')
-def render_recommender():
-    with open('video_games.json') as video_games_data:
-        games = json.load(video_games_data)
-    if 'genre' in request.args:
-        genre = request.args['genre']
-        return render_template('recommenderdata.html', options=get_genre_options(games), genre_list=genres)
-    else:
-        return render_template('recommender.html', options=get_genre_options(games))"""
 
 @app.route('/recommender')
 def render_recommender():
@@ -44,7 +34,15 @@ def render_recommendation():
         games = json.load(video_games_data)
     genre = request.args.get('genre')
     console = request.args.get('console')
-    response = "I recommend that you play " + str(console) + "!"
+    recommendedGames = []
+    for g in games:
+        if (genre == g["Metadata"]["Genres"] && console == g["Release"]["Console"]):
+            recommendedGames.append(g)
+    if (len(recommendedGames) == 0):
+        response = "Sorry, there's no game that fits your preferences."
+    else:
+        theGame = random.choice(recommendedGames)
+        response = "I recommend that you play " + str(theGame) + "!"
     return render_template('recommender.html', recommended_game=response)
 
 def get_genre_options(games):
@@ -80,9 +78,6 @@ def console_game_totals(games):
         graph_points = graph_points + Markup("{ label: '" + str(console) + "', y: " + str(video_games) + " }, ")
     graph_points = graph_points[:-2]
     return graph_points
-
-"""foo = ['a', 'b', 'c', 'd', 'e']
-print(random.choice(foo))"""    
     
 def is_localhost():
     root_url = request.url_root
