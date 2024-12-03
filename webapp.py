@@ -45,7 +45,7 @@ def get_genre_options(games):
         genre = g["Metadata"]["Genres"]
         if (genre not in genres):
             genres.append(genre)
-            genere_options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
+            genre_options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
     return genre_options
 
 def get_console_options(games):
