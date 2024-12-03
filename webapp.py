@@ -54,7 +54,7 @@ def get_console_options(games):
     for g in games:
         console = g["Release"]["Console"]
         if (console not in consoles):
-            console.append(console)
+            consoles.append(console)
             console_options += Markup("<option value=\"" + str(console) + "\">" + str(console) + "</option>")
     return console_options    
 
