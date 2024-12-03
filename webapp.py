@@ -42,7 +42,7 @@ def render_consolechart():
 def render_recommendation(): 
     genre = request.args.get('genre')
     console = request.args.get('console')
-    response = "I recommend that you play " + (console) + "!"
+    response = "I recommend that you play " + str(console) + "!"
     return render_template('recommender.html', recommended_game=response)
 
 def get_genre_options(games):
