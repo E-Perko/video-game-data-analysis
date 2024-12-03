@@ -36,7 +36,7 @@ def render_recommendation():
     console = request.args.get('console')
     recommendedGames = []
     for g in games:
-        if (genre == g["Metadata"]["Genres"] && console == g["Release"]["Console"]):
+        if (genre == g["Metadata"]["Genres"] and console == g["Release"]["Console"]):
             recommendedGames.append(g)
     if (len(recommendedGames) == 0):
         response = "Sorry, there's no game that fits your preferences."
