@@ -18,7 +18,8 @@ def render_recommender():
     if 'genre' in request.args:
         genre = request.args['genre']
         return render_template('recommenderdata.html', options=get_genre_options(games), genre_list=genres)
-    return render_template('recommender.html', options=get_genre_options(games))
+    else:
+        return render_template('recommender.html', options=get_genre_options(games))
 
 @app.route("/consolechart")
 def render_consolechart():
