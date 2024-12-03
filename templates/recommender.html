@@ -7,10 +7,15 @@
 {% block heading %}Video Game Recommender{% endblock %}
 
 {% block body %}
-<h2>What is your favorite video game genre?</h2>
 <form action=/recommender>
+  <h2>What is your favorite video game genre?</h2>
   <select name="genres">
-    {{ options }}
+    {{ genre_options }}
+  </select>
+  <br><br>
+  <h2>What is your favorite console?</h2>
+  <select name="consoles">
+    {{ console_options }}
   </select>
   <br><br>
   <input type="submit">
