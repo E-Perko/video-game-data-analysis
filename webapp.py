@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, flash
 from markupsafe import Markup
 from datetime import datetime
+import random
 
 import os
 import json
@@ -27,9 +28,9 @@ def render_recommender():
         games = json.load(video_games_data)
     if 'genre' in request.args:
         genre = request.args['genre']
-        return render_template('recommenderdata.html', options=get_genre_options(games), genre_list=genres)
-    else:
-        return render_template('recommender.html', options=get_genre_options(games))
+    if 'console' in request.args:
+        console = request.args['genre']
+    return render_template('recommender.html', genre_options=get_genre_options(games), console_options=get_console_options(games))
 
 @app.route("/consolechart")
 def render_consolechart():
@@ -39,13 +40,23 @@ def render_consolechart():
 
 def get_genre_options(games):
     genres = []
-    options = ""
+    genre_options = ""
     for g in games:
         genre = g["Metadata"]["Genres"]
         if (genre not in genres):
             genres.append(genre)
-            options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
-    return options    
+            genere_options += Markup("<option value=\"" + str(genre) + "\">" + str(genre) + "</option>")
+    return genre_options
+
+def get_console_options(games):
+    consoles = []
+    console_options = ""
+    for g in games:
+        console = g["Release"]["Console"]
+        if (console not in consoles):
+            console.append(console)
+            console_options += Markup("<option value=\"" + str(console) + "\">" + str(console) + "</option>")
+    return console_options    
 
 def console_game_totals(games):
     consoles = {}
@@ -61,9 +72,7 @@ def console_game_totals(games):
     graph_points = graph_points[:-2]
     return graph_points
 
-"""import random
-
-foo = ['a', 'b', 'c', 'd', 'e']
+"""foo = ['a', 'b', 'c', 'd', 'e']
 print(random.choice(foo))"""    
     
 def is_localhost():
